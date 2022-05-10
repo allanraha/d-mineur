@@ -1,3 +1,5 @@
+#include<stdio.h>
+
 char pion(int p){
 	if(p==0){
 		return ' ';
