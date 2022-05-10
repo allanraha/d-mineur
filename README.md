@@ -1,1 +1,2 @@
-# d-mineur
+# d-mineur 
+nptk c démineur
