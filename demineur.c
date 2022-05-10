@@ -1,4 +1,5 @@
 #include<stdio.h>
+#define TAILLE 10
 
 char pion(int p){
 	if(p==0){
