@@ -3,7 +3,7 @@
 #include <time.h>
 
 
-char JEU[10][10];
+int JEU[10][10];
 char mine[10][10];
 int i,j;
 
@@ -19,12 +19,13 @@ void GRILLEdeb(){
     }
 }
 
-void MINE(int c){
+void MINEdeb(){
+	int c=10;
 	int k=0;
 	int l=0;
 	for(i=0;i<c;i++){
-        l=rand()%c;
-        k=rand()%c;
+        l=rand()%10;
+        k=rand()%10;
         if(mine[l][k]=='0'){
             mine[l][k]='M';
         }
@@ -169,17 +170,14 @@ int MineAutour(int l,int c){
 				N=N+1;
 				}
 			if(mine[l-1][c-1]=='M'){
-			N=N+1;
+				N=N+1;
 				}
 			if(mine[l-1][c]=='M'){
 				N=N+1;
 				}
 			if(mine[l-1][c+1]=='M'){
 				N=N+1;
-				}
-			if(mine[l][c-1]=='M'){
-				N=N+1;
-				}
+				}			
 			if(mine[l][c+1]=='M'){
 				N=N+1;
 				}
@@ -222,8 +220,9 @@ int MineAutour(int l,int c){
 
 int main(){
 
-    int i,j;
+    int i,j,c,l;
     int aut;
+    char p;
     srand(time(NULL));
     for(i=0;i<10;i++){
         for(int j=0;j<10;j++){
@@ -238,17 +237,23 @@ int main(){
     
     GRILLEdeb();
     MINEdeb();
-    aut=MineAutour(0,0);
-    printf("\n\n");
-    for(i=0;i<10;i++){
-        for(j=0;j<10;j++){
-            printf(" %c",mine[i][j]);
-        }
-        printf("\n");
-    }
-    printf("il y a %d mines autour de la case 0:0",aut);
+    for(i=0;i<100;i++){
+ 	   printf("quel case ?");
+   	 scanf("%d",&l);
+   	 scanf("%d",&c);
+   	 JEU[l][c]=MineAutour(l,c)+'0';
+      	 printf("\n\n");
+ 	 	for(i=0;i<10;i++){
+       			 for(j=0;j<10;j++){
+           			 printf(" %c",mine[i][j]);
+      				  }
+        		printf("\n");
+   			 }
+    	 printf("\n");
+         GRILLEdeb();
+         }
+   
     
     return 0;
 }
-
 
