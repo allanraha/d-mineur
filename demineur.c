@@ -19,13 +19,12 @@ void GRILLEdeb(){
     }
 }
 
-void MINEdeb(){
-	int c=10;
+void MINE(int c){
 	int k=0;
 	int l=0;
 	for(i=0;i<c;i++){
-        l=rand()%10;
-        k=rand()%10;
+        l=rand()%c;
+        k=rand()%c;
         if(mine[l][k]=='0'){
             mine[l][k]='M';
         }
