@@ -3,14 +3,15 @@
 #include <time.h>
 
 
-int JEU[20][20];
-char mine[20][20];
+char JEU[30][30];
+char mine[30][30];
+
 int i,j;
 int l,c,nbmines;
 
 void Init(int l,int c){
-      for(i=0;i<l;i++){
-        for(int j=0;j<c;j++){
+      for(i=0;i<20;i++){
+        for(j=0;j<20;j++){
             JEU[i][j]='~';
             mine[i][j]='0';
         }
@@ -54,6 +55,7 @@ void MINE(int nbmines,int lig,int col){
         }
     }
 }
+
 	
 void MineAutour(int l,int c){
 	char N=0;
@@ -65,6 +67,7 @@ void MineAutour(int l,int c){
 	
 	if(c==0){
 		if(l==0){
+		N=0;
 			if(mine[l+1][c]=='M'){
 				N=N+1;
 				}
@@ -88,6 +91,7 @@ void MineAutour(int l,int c){
 				}
 			}
 		if(l==9){
+		N=0;
 			if(mine[l-1][c]=='M'){
 				N=N+1;
 				}
@@ -111,6 +115,7 @@ void MineAutour(int l,int c){
 					}
 			}
 		else{	
+		N=0;
 			if(mine[l-1][c]=='M'){
 				N=N+1;
 				}
@@ -148,6 +153,7 @@ void MineAutour(int l,int c){
 			
 	}else if(c==9){
 		      if(l==0){
+		      N=0;
 			        if(mine[l][c-1]=='M'){
 					N=N+1;
 					}
@@ -171,6 +177,7 @@ void MineAutour(int l,int c){
 					}
 				}
 			if(l==9){
+			N=0;
 				if(mine[l-1][c]=='M'){
 					N=N+1;
 					}
@@ -194,6 +201,7 @@ void MineAutour(int l,int c){
 					}
 				}
 			else{
+			N=0;
 				if(mine[l-1][c]=='M'){
 					N=N+1;
 					}
@@ -229,6 +237,7 @@ void MineAutour(int l,int c){
 					}
 				}
 	}else if(l==0 && c!=0 && c!=9){
+	N=0;
 			if(mine[l][c-1]=='M'){
 				N=N+1;
 				}
@@ -264,6 +273,7 @@ void MineAutour(int l,int c){
 					}
 			
 	}else if(l==9 && c!=0 && c!=9){
+	N=0;
 			if(mine[l][c-1]=='M'){
 				N=N+1;
 				}
@@ -299,6 +309,7 @@ void MineAutour(int l,int c){
 					}
 	}
 	else{
+	N=0;
 			if(mine[l][c-1]=='M'){
 				N=N+1;
 				}
@@ -395,10 +406,12 @@ void choixdifficulte(){
 
 void jouer(){
   int choix_c,choix_l;  
- 	printf("quel case ?");
+ 	printf("quels case ?");
   scanf("%d",&choix_l);
   scanf("%d",&choix_c);
-  JEU[choix_l][choix_c]=MineAutour(choix_l,choix_c)+'0';
+  
+  MineAutour(choix_l,choix_c);
+  
   printf("\n\n");
  	for(i=0;i<l;i++){
     for(j=0;j<c;j++){
