@@ -55,14 +55,14 @@ void MINE(int nbmines,int lig,int col){
     }
 }
 	
-int MineAutour(int l,int c){
-	int N=0;
+void MineAutour(int l,int c){
+	char N=0;
 	if(mine[l][c]=='M'){
 		printf("BOOMMM! Vous avez perdu !!");
 		N=50;
 		exit(1);
 		}
-	N=0;
+	
 	if(c==0){
 		if(l==0){
 			if(mine[l+1][c]=='M'){
@@ -74,7 +74,18 @@ int MineAutour(int l,int c){
 			if(mine[l][c+1]=='M'){
 				N=N+1;
 				}
-				return N;
+				JEU[l][c]=N+'0';
+				if(mine[l+1][c]=='0' && mine[l+1][c]=='0' && mine[l+1][c]=='0'){
+				    if(JEU[l+1][c]!='0'){
+				      MineAutour(l+1,c);
+				    }
+				    if(JEU[l+1][c+1]!='0'){
+				      MineAutour(l+1,c+1);
+				    }
+				    if(JEU[l][c+1]!='0'){
+				      MineAutour(l,c+1);
+				    }
+				}
 			}
 		if(l==9){
 			if(mine[l-1][c]=='M'){
@@ -86,7 +97,18 @@ int MineAutour(int l,int c){
 			if(mine[l][c+1]=='M'){
 				N=N+1;
 				}
-				return N;
+				JEU[l][c]=N+'0';
+					if(mine[l-1][c]=='0' && mine[l-1][c+1]=='0' && mine[l][c+1]=='0'){
+					     if(JEU[l-1][c]!='0'){
+				             MineAutour(l-1,c);
+				         }
+				         if(JEU[l-1][c+1]!='0'){
+				             MineAutour(l-1,c+1);
+				         }
+				         if(JEU[l][c+1]!='0'){
+				             MineAutour(l,c+1);
+				         }
+					}
 			}
 		else{	
 			if(mine[l-1][c]=='M'){
@@ -104,7 +126,24 @@ int MineAutour(int l,int c){
 			if(mine[l+1][c]=='M'){
 				N=N+1;
 				}
-				return N;
+				JEU[l][c]=N+'0';
+					if(mine[l-1][c]=='0' && mine[l-1][c+1]=='0' && mine[l][c+1]=='0' && mine[l+1][c+1]=='0' && mine[l+1][c]=='0'){
+					     if(JEU[l-1][c]!='0'){
+				             MineAutour(l-1,c);
+				         }
+				         if(JEU[l-1][c+1]!='0'){
+				             MineAutour(l-1,c+1);
+				         }
+				         if(JEU[l][c+1]!='0'){
+				             MineAutour(l,c+1);
+				         }
+				         if(JEU[l+1][c+1]!='0'){
+				             MineAutour(l+1,c+1);
+				         }
+				         if(JEU[l+1][c]!='0'){
+				             MineAutour(l+1,c);
+				         }
+					}
 			}
 			
 	}else if(c==9){
@@ -115,10 +154,21 @@ int MineAutour(int l,int c){
 		        	if(mine[l+1][c-1]=='M'){
 					N=N+1;
 					}
-				if(mine[l+1][c]=='M'){
+			    	if(mine[l+1][c]=='M'){
 					N=N+1;
 					}
-					return N;
+					JEU[l][c]=N+'0';
+					if(mine[l][c-1]=='0' && mine[l+1][c-1]=='0' && mine[l+1][c]=='0'){
+					     if(JEU[l][c-1]!='0'){
+				             MineAutour(l,c-1);
+				         }
+				         if(JEU[l+1][c-1]!='0'){
+				             MineAutour(l+1,c-1);
+				         }
+				         if(JEU[l+1][c]!='0'){
+				             MineAutour(l+1,c);
+				         }
+					}
 				}
 			if(l==9){
 				if(mine[l-1][c]=='M'){
@@ -130,7 +180,18 @@ int MineAutour(int l,int c){
 				if(mine[l][c-1]=='M'){
 					N=N+1;
 					}
-					return N;
+					JEU[l][c]=N+'0';
+					if(mine[l-1][c]=='0' && mine[l-1][c-1]=='0' && mine[l][c-1]=='0'){
+					     if(JEU[l-1][c]!='0'){
+				             MineAutour(l-1,c);
+				         }
+				         if(JEU[l-1][c-1]!='0'){
+				             MineAutour(l-1,c-1);
+				         }
+				         if(JEU[l][c-1]!='0'){
+				             MineAutour(l,c-1);
+				         }
+					}
 				}
 			else{
 				if(mine[l-1][c]=='M'){
@@ -148,7 +209,24 @@ int MineAutour(int l,int c){
 				if(mine[l+1][c]=='M'){
 					N=N+1;
 					}
-					return N;
+					JEU[l][c]=N+'0';
+					if(mine[l-1][c]=='0' && mine[l-1][c-1]=='0' && mine[l][c-1]=='0' && mine[l+1][c-1]=='0' && mine[l+1][c]=='0'){
+					     if(JEU[l-1][c]!='0'){
+				             MineAutour(l-1,c);
+				         }
+				         if(JEU[l-1][c-1]!='0'){
+				             MineAutour(l-1,c-1);
+				         }
+				         if(JEU[l][c-1]!='0'){
+				             MineAutour(l,c-1);
+				         }
+				         if(JEU[l+1][c-1]!='0'){
+				             MineAutour(l+1,c-1);
+				         }
+				         if(JEU[l+1][c]!='0'){
+				             MineAutour(l+1,c);
+				         }
+					}
 				}
 	}else if(l==0 && c!=0 && c!=9){
 			if(mine[l][c-1]=='M'){
@@ -166,7 +244,25 @@ int MineAutour(int l,int c){
 			if(mine[l][c+1]=='M'){
 				N=N+1;
 				}
-				return N;
+				JEU[l][c]=N+'0';
+				if(mine[l][c-1]=='0' && mine[l+1][c-1]=='0' && mine[l+1][c]=='0' && mine[l+1][c+1]=='0' && mine[l][c+1]=='0'){
+					     if(JEU[l][c-1]!='0'){
+				             MineAutour(l,c-1);
+				         }
+				         if(JEU[l+1][c-1]!='0'){
+				             MineAutour(l+1,c-1);
+				         }
+				         if(JEU[l+1][c]!='0'){
+				             MineAutour(l+1,c);
+				         }
+				         if(JEU[l+1][c+1]!='0'){
+				             MineAutour(l+1,c+1);
+				         }
+				         if(JEU[l][c+1]!='0'){
+				             MineAutour(l,c+1);
+				         }
+					}
+			
 	}else if(l==9 && c!=0 && c!=9){
 			if(mine[l][c-1]=='M'){
 				N=N+1;
@@ -183,7 +279,24 @@ int MineAutour(int l,int c){
 			if(mine[l][c+1]=='M'){
 				N=N+1;
 				}
-				return N;
+				JEU[l][c]=N+'0';
+				if(mine[l][c-1]=='0' && mine[l-1][c-1]=='0' && mine[l-1][c]=='0' && mine[l-1][c+1]=='0' && mine[l][c+1]=='0'){
+					     if(JEU[l][c-1]!='0'){
+				             MineAutour(l,c-1);
+				         }
+				         if(JEU[l-1][c-1]!='0'){
+				             MineAutour(l-1,c-1);
+				         }
+				         if(JEU[l-1][c]!='0'){
+				             MineAutour(l-1,c);
+				         }
+				         if(JEU[l-1][c+1]!='0'){
+				             MineAutour(l-1,c+1);
+				         }
+				         if(JEU[l][c+1]!='0'){
+				             MineAutour(l,c+1);
+				         }
+					}
 	}
 	else{
 			if(mine[l][c-1]=='M'){
@@ -210,8 +323,51 @@ int MineAutour(int l,int c){
 			if(mine[l+1][c+1]=='M'){
 				N=N+1;
 				}
-			return N;
+			JEU[l][c]=N+'0';
+			if(mine[l][c-1]=='0' && mine[l-1][c-1]=='0' && mine[l-1][c]=='0' && mine[l-1][c+1]=='0' && mine[l][c+1]=='0' && mine[l+1][c-1]=='0' && mine[l+1][c]=='0' && mine[l+1][c+1]=='0' ){
+					     if(JEU[l][c-1]!='0'){
+				             MineAutour(l,c-1);
+				         }
+				         if(JEU[l-1][c-1]!='0'){
+				             MineAutour(l-1,c-1);
+				         }
+				         if(JEU[l-1][c]!='0'){
+				             MineAutour(l-1,c);
+				         }
+				         if(JEU[l-1][c+1]!='0'){
+				             MineAutour(l-1,c+1);
+				         }
+				         if(JEU[l][c+1]!='0'){
+				             MineAutour(l,c+1);
+				         }
+				          if(JEU[l+1][c-1]!='0'){
+				             MineAutour(l+1,c-1);
+				         }
+				          if(JEU[l+1][c]!='0'){
+				             MineAutour(l+1,c);
+				         }
+				          if(JEU[l+1][c+1]!='0'){
+				             MineAutour(l+1,c+1);
+				         }
+					}
 		}
+	
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
