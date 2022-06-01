@@ -57,65 +57,6 @@ void MINE(int nbmines,int lig,int col){
 }
 
 	
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-
-char JEU[30][30];
-char mine[30][30];
-
-int i,j;
-int l,c,nbmines;
-
-void Init(int l,int c){
-      for(i=0;i<20;i++){
-        for(j=0;j<20;j++){
-            JEU[i][j]='~';
-            mine[i][j]='0';
-        }
-    }
-  
-}
-
-void GRILLE(int lig,int col){
-    char a;
-    printf("   ");
-    for(a='A';a<'A'+col;a++){
-        printf("%c ",a);
-    }
-    printf("\n");
-    for(i=0;i<lig;i++){
-      if(i<10){
-        printf("%d |",i);
-      }
-      else{
-        printf("%d|",i);
-      }
-      
-        for(j=0;j<col;j++){
-            printf("%c|",JEU[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-void MINE(int nbmines,int lig,int col){
-	int k=0;
-	int l=0;
-	for(i=0;i<nbmines;i++){
-        l=rand()%lig;
-        k=rand()%col;
-        if(mine[l][k]=='0'){
-            mine[l][k]='M';
-        }
-        else{
-            nbmines++;
-        }
-    }
-}
-
-	
 void MineAutour(int l,int c,int taille_l,int taille_c){
 	char N;
 	if(mine[l][c]=='M'){
