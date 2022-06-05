@@ -1,12 +1,12 @@
 all : exec
 
-exec : main.o function.o  
-	gcc -o exec main.o function.o
+exec : demineur.o function.o  
+	gcc -o exec demineur.o function.o
 
-main.o : main.c main.h
-	gcc -o main.o -c main.c
+main.o : demineur.c demineur.h
+	gcc -o demineur.o -c demineur.c
 
-function.o : function.c main.h
+function.o : function.c demineur.h
 	gcc -o function.o -c function.c
 
 clean :
