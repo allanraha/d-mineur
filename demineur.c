@@ -43,7 +43,7 @@ int main(){
     if(compt==condvictoire){         
       printf("Bravo vous avez gagnez !\n");
       temps2 = time(NULL);
-      printf("Votre temps de jeu: %lf\n",difftime(temps2, temps1));
+      printf("Votre temps de jeu: %lf secondes\n",difftime(temps2, temps1));
     }
     do{
       printf("Voulez vous rejouer ?\n");
