@@ -7,11 +7,11 @@
 #define TAILLEINT 16
 #define couleur(param) printf("\033[%sm", param)
 
-void Init(char mine[30][30], char jeu[30][30], int l, int c);
+void init(char mine[30][30], char jeu[30][30], int l, int c);
 
-void GRILLE(char jeu[30][30], int lig, int col);
+void grille(char jeu[30][30], int lig, int col);
 
-void MINE(char mine[30][30], int nbmines, int lig, int col);
+void placermine(char mine[30][30], int nbmines, int lig, int col);
 
 void MineAutour(char mine[30][30], char jeu[30][30], int l, int c, int taille_l,
                 int taille_c);
