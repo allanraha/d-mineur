@@ -1,13 +1,13 @@
-README Démineur, Allan Raha, Hicham Bettahar
+README Démineur, Allan Rahajarizafy, Hicham Bettahar
 
 
-pour compiler le programme il suffit d'écrire make dans le terminal grace au Makefile.
+Pour compiler le programme, il suffit d'écrire make dans le terminal grace au Makefile.
 Ensuite, on écrit: ./exec pour l'exécuter.
 
 On nous demande alos de choisir une difficulté: -0 pour la difficulté débutante (grille 9x9)
                                                 -1 pour la difficulté intermédiaire (grille 16x16)
                                                 
-La grille s'affiche ensuite en fonction du paramètre que vous avez entrez avant.
+La grille s'affiche ensuite en fonction du paramètre que vous avez entré avant.
 2 options: 0 pour dévoiler une case 
            1 pour placer un marqueur
            
