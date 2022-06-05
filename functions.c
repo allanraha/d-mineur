@@ -1,7 +1,7 @@
-#include "main.h"
+#include "demineur.h"
 
 
-void Init(char mine[30][30],char jeu[30][30],int l,int c){
+void init(char mine[30][30],char jeu[30][30],int l,int c){
   int i,j;
   for(i=0;i<20;i++){
     for(j=0;j<20;j++){
@@ -11,7 +11,7 @@ void Init(char mine[30][30],char jeu[30][30],int l,int c){
   }
 }
 
-void GRILLE(char jeu[30][30],int lig,int col){
+void grille(char jeu[30][30],int lig,int col){
   int i,j;
   printf("\n\n    ");
   for(i=0;i<col;i++){
@@ -83,7 +83,7 @@ void GRILLE(char jeu[30][30],int lig,int col){
   }
 }
 
-void MINE(char mine[30][30],int nbmines,int lig,int col){
+void placermine(char mine[30][30],int nbmines,int lig,int col){
 	int i,j;
   int k=0;
 	int l=0;
@@ -432,11 +432,11 @@ void placerdrapeau(char jeu[30][30],int l,int c){
   scanf("%d",&choix_c);
   if(jeu[choix_l][choix_c]=='~'){ 
     jeu[choix_l][choix_c]='X';   
-    GRILLE(jeu,l,c);                
+    grille(jeu,l,c);                
   }
   else if(jeu[choix_l][choix_c]=='X'){ 
     jeu[choix_l][choix_c]='~';          
-    GRILLE(jeu,l,c);                 
+    grille(jeu,l,c);                 
   }
   else{                            
     printf("La case est deja révélée ! Pas besoin de marqueur.\n");
@@ -495,7 +495,8 @@ void jouer(char mine[30][30],char jeu[30][30],int l,int c,int *pconddéfaite){
   else{                                 
     MineAutour(mine,jeu,choix_l,choix_c,l-1,c-1);
     printf("\n\n");                        
-    GRILLE(jeu,l,c);                        
+    grille(jeu,l,c);                        
     printf("\n");
   }
 }
+
