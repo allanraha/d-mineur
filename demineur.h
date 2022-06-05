@@ -22,5 +22,4 @@ void placerdrapeau(char jeu[30][30], int l, int c);
 
 int choixtour();
 
-void jouer(char mine[30][30], char jeu[30][30], int l, int c,
-           int *pconddéfaite);
+void jouer(char mine[30][30], char jeu[30][30], int l, int c,int *pconddéfaite);
