@@ -19,7 +19,10 @@ int main(){
     Init(mine,JEU,l,c);          
     MINE(mine,nbmines,l,c);  
     GRILLE(JEU,l,c);        
-    condvictoire = (l*c)-nbmines;                      while(compt!=condvictoire && conddéfaite==0){ 
+    condvictoire = (l*c)-nbmines;                      
+    time_t temps1 = time(NULL);
+    time_t temps2;
+    while(compt!=condvictoire && conddéfaite==0){ 
       compt=0;                                    
       tour=choixtour();                           
       if(tour==0){                               
@@ -39,6 +42,8 @@ int main(){
     }
     if(compt==condvictoire){         
       printf("Bravo vous avez gagnez !\n");
+      temps2 = time(NULL);
+      printf("Votre temps de jeu: %lf\n",difftime(temps2, temps1));
     }
     do{
       printf("Voulez vous rejouer ?\n");
